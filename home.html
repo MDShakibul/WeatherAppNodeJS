@@ -231,15 +231,19 @@
             const CurDate = document.getElementById("date");
             let weathercon =document.getElementById("weathercon");
 
-            const tempStatus = "Clouds";
+            const tempStatus = "{%tempstatus%}";
 
-            // const getCurrentDay = () =>{
-            //     var weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+            if(tempStatus == "Sunny"){
+                weathercon.innerHTML =' <i class="fas fa-sun" style="color: #FFC312;"></i>';
+            } else if(tempStatus == "Clouds"){
+                weathercon.innerHTML =' <i class="fas fa-cloud" style="color: #dfe4ea;"></i>';
+            } else if(tempStatus == "Rainy"){
+                weathercon.innerHTML =' <i class="fas fa-rain" style="color: #a4b0be;"></i>';
+            } else{
+                weathercon.innerHTML =' <i class="fas fa-cloud" style="color: #dfe4ea;"></i>';
+            }
 
-            //     let currentTime = new Date();
-            //     let day = weekday[currentTime.getDay()];
-            //     return day;
-            // }
+           
 
             const getCurrentTime = () =>{
                 var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
@@ -248,23 +252,13 @@
 
                 let now = new Date();
                 var day = weekday[now.getDay()];
-                //console.log(day);
+                
                 var month = months[now.getMonth()];
                 var date = now.getDate();
                 let hours = now.getHours();
                
                 let mins = now.getMinutes();
-                //console.log(mins);
-
-                // let period = "PM";
-
-
-
-                // if(hours <= 12){
-                //     period = "AM";
-                //     hours -=12;
-
-                // }
+                
 
                 let period = hours >= 12 ? 'PM' : 'AM';
 
@@ -278,9 +272,6 @@
                      hours = "12";
                 }
 
-                // if(hours < 10){
-                //     hours = "0" + hours;
-                // }
 
                if(mins < 10){
                 mins = "0" + mins;
